@@ -4,7 +4,7 @@ t=$1
 
 # Enumerating Subdomains
 sublist3r -d $t -o subdomains.txt
-subfinder -d $t -all -cs | anew subdomains.txt
+subfinder -d $t -all | anew subdomains.txt
 amass enum -passive -config ~/.config/recon/config.ini -d $1 | anew subdomains.txt
 assetfinder --subs-only $t | anew subdomains.txt
 
