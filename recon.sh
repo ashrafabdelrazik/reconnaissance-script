@@ -29,7 +29,7 @@ cat waymore-out/* | grep -i "key=\|api=\|htm:\|aspx:\|in:\|up:\|register:\|\/:\|
 
 # Peak (PUT Method)
 for i in $(cat hosts); do curl -X 'PUT' --data-binary 'h1ashtestputmethod' '$i/h1ashup.html' ; done
-cat alive-subdomains.txt | sed 's/$/h1ashup.html/g' | fff -d 1 -S -o fff-out
+cat alive-subdomains.txt | sed 's/$/\/h1ashup.html/g' | fff -d 1 -S -o fff-out
 
 ## Peak (.git)
 for i in $(cat alive-subdomains.txt); do goop $i; done
