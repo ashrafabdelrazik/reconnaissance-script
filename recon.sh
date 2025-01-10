@@ -24,15 +24,15 @@ done
 cat waymore-out/* | grep -i "key=\|api=\|htm:\|aspx:\|in:\|up:\|register:\|\/:\|gmail.com:\|[(a-zA-Z0-9)]@[(a-zA-Z0-9)].[(a-zA-Z0-9)]:" | anew waymore-creds
 
 # Directory Fuzzing (ffuf)
-mkdir -p ffuf-out
-for i in $(cat alive-subdomains.txt); do ffuf -c -r -w ~/.config/recon/wordlist.txt -u $i/FUZZ -mc 200 -of html -o ffuf-out/$RANDOM ; done
+#mkdir -p ffuf-out
+#for i in $(cat alive-subdomains.txt); do ffuf -c -r -w ~/.config/recon/wordlist.txt -u $i/FUZZ -mc 200 -of html -o ffuf-out/$RANDOM ; done
 
 # Peak (PUT Method)
 for i in $(cat hosts); do curl -X 'PUT' --data-binary 'h1ashtestputmethod' '$i/h1ashup.html' ; done
-cat hosts | sed 's/$/h1ashup.html/g' | fff -d 1 -S -o fff-out
+cat alive-subdomains.txt | sed 's/$/h1ashup.html/g' | fff -d 1 -S -o fff-out
 
 ## Peak (.git)
-for i in $(cat domains); do goop $i; done
+for i in $(cat alive-subdomains.txt); do goop $i; done
 
 # censys.io
 # urlscan.io
